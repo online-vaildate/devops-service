@@ -19,7 +19,9 @@ jobs:
           - v1-dependencies-{{ checksum "pom.xml" }}
           - v1-dependencies-
       - run: mvn clean test
-      - run: mvn --batch-mode verify sonar:sonar -Dsonar.host.url=${SONAR_URL}
+      - run:
+          command: mvn --batch-mode verify sonar:sonar -Dsonar.host.url=${SONAR_URL}
+          background: true
 
   maven_build:
     <<: *default
